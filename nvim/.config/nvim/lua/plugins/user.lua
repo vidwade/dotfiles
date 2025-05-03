@@ -54,8 +54,38 @@ return {
   },
   {
     "nvim-neorg/neorg",
-    lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
-    version = "*", -- Pin Neorg to the latest stable release
-    config = true,
+    lazy = false,
+    -- Specify an older version
+    version = "v7.0.0", -- Use a specific older tag
+    -- Alternatively, use a commit hash:
+    -- commit = "0e2a35e8e83e5ebf4ff40b3a4cf49a7e2ee844b0",
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-treesitter/nvim-treesitter" },
+    },
+    config = function()
+      require("neorg").setup({
+        load = {
+          ["core.defaults"] = {},
+          ["core.concealer"] = {},
+          ["core.dirman"] = {
+            config = {
+              workspaces = {
+                notes = "~/notes",
+              },
+              default_workspace = "notes",
+            },
+          },
+        },
+      })
+    end,
   },
+  {
+    "kiyoon/jupynium.nvim",
+    build = "pip3 install --user .",
+    -- build = "uv pip install . --python=$HOME/.virtualenvs/jupynium/bin/python",
+    -- build = "conda run --no-capture-output -n jupynium pip install .",
+  },
+  "rcarriga/nvim-notify", -- optional
+  "stevearc/dressing.nvim", -- optional, UI for :JupyniumKernelSelect
 }
