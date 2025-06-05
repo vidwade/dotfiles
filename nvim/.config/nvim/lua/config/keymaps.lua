@@ -27,3 +27,15 @@ vim.keymap.set("x", "<LocalLeader>r", ":<C-u>MagmaEvaluateVisual<CR>", { silent 
 vim.keymap.set("n", "<LocalLeader>rc", "<cmd>MagmaReevaluateCell<CR>", { silent = true })
 vim.keymap.set("n", "<LocalLeader>rd", "<cmd>MagmaDelete<CR>", { silent = true })
 vim.keymap.set("n", "<LocalLeader>ro", "<cmd>MagmaShowOutput<CR>", { silent = true })
+
+-- Add keymap for Rest run
+vim.keymap.set("n", "<leader>Rr", "<cmd>Rest run<CR>", { desc = "Run Rest request" })
+
+-- Avante keybindings
+vim.keymap.set("n", "<leader>aa", "<cmd>AvanteToggle<cr>", { desc = "Toggle Avante" })
+vim.keymap.set("n", "<leader>ac", "<cmd>AvanteChat<cr>", { desc = "Avante Chat" })
+vim.keymap.set("n", "<leader>af", "<cmd>AvanteFocus<cr>", { desc = "Focus Avante" })
+vim.keymap.set("n", "<leader>ar", "<cmd>AvanteRefresh<cr>", { desc = "Refresh Avante" })
+vim.keymap.set("n", "<leader>ae", "<cmd>AvanteEdit<cr>", { desc = "Edit with Avante" })
+vim.keymap.set("v", "<leader>aa", "<cmd>AvanteAsk<cr>", { desc = "Ask Avante" })
+vim.keymap.set("v", "<leader>ae", "<cmd>AvanteEdit<cr>", { desc = "Edit with Avante" })
