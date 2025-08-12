@@ -11,7 +11,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
-accordion-padding = 30
+accordion-padding = 0
 
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
@@ -28,12 +28,12 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*)
 [gaps]
-inner.horizontal = 8
-inner.vertical =   8
-outer.left =       8
-outer.bottom =     8
-outer.top =        8
-outer.right =      8
+inner.horizontal = 0
+inner.vertical =   0
+outer.left =       0
+outer.bottom =     0
+outer.top =        0
+outer.right =      0
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -104,15 +104,15 @@ alt-shift-9 = 'move-node-to-workspace 9'
 alt-shift-0 = 'move-node-to-workspace 10'
 
 # Move window to monitor
-alt-shift-tab = 'move-node-to-monitor --wrap-around next'
+alt-shift-m = 'move-node-to-monitor --wrap-around next'
 
 # Window management
 alt-shift-minus = 'resize smart -50'
 alt-shift-equal = 'resize smart +50'
 
 # Create/close tabs
-alt-t = 'split horizontal'
-alt-shift-t = 'split vertical'
+alt-t = 'layout tiles horizontal'
+alt-shift-t = 'layout tiles vertical'
 alt-f = 'fullscreen'
 
 # Service commands
