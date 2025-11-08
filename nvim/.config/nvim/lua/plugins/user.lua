@@ -38,49 +38,110 @@ return {
     end,
   },
   { "wakatime/vim-wakatime", lazy = false },
- -- Lazy
-{
-  'piersolenski/import.nvim',
-  dependencies = {
-    -- One of the following pickers is required:
-    'nvim-telescope/telescope.nvim',
- -- 'folke/snacks.nvim',
- -- 'ibhagwan/fzf-lua',
-  },
-  opts = {
- picker = "telescope",
-  },
-  keys = {
-    {
-      "<leader>i",
-      function()
-        require("import").pick()
-      end,
-      desc = "Import",
+  -- Lazy
+  {
+    "piersolenski/import.nvim",
+    dependencies = {
+      -- One of the following pickers is required:
+      "nvim-telescope/telescope.nvim",
+      -- 'folke/snacks.nvim',
+      -- 'ibhagwan/fzf-lua',
+    },
+    opts = {
+      picker = "telescope",
+    },
+    keys = {
+      {
+        "<leader>i",
+        function()
+          require("import").pick()
+        end,
+        desc = "Import",
+      },
     },
   },
-},
   {
-  "folke/snacks.nvim",
-  priority = 1000,
-  lazy = false,
-  ---@type snacks.Config
-  opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-    bigfile = { enabled = true },
-    dashboard = { enabled = true },
-    explorer = { enabled = true },
-    indent = { enabled = true },
-    input = { enabled = true },
-    picker = { enabled = true },
-    notifier = { enabled = true },
-    quickfile = { enabled = true },
-    scope = { enabled = true },
-    scroll = { enabled = true },
-    statuscolumn = { enabled = true },
-    words = { enabled = true },
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+      bigfile = { enabled = true },
+      dashboard = { enabled = true },
+      explorer = { enabled = true },
+      indent = { enabled = true },
+      input = { enabled = true },
+      picker = { enabled = true },
+      notifier = { enabled = true },
+      quickfile = { enabled = true },
+      scope = { enabled = true },
+      scroll = { enabled = true },
+      statuscolumn = { enabled = true },
+      words = { enabled = true },
+    },
   },
-},
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
+  },
+  {
+    "3rd/diagram.nvim",
+    dependencies = {
+      { "3rd/image.nvim", opts = {} }, -- you'd probably want to configure image.nvim manually instead of doing this
+    },
+    opts = { -- you can just pass {}, defaults below
+      events = {
+        render_buffer = { "InsertLeave", "BufWinEnter", "TextChanged" },
+        clear_buffer = { "BufLeave" },
+      },
+      renderer_options = {
+        mermaid = {
+          background = nil, -- nil | "transparent" | "white" | "#hex"
+          theme = nil, -- nil | "default" | "dark" | "forest" | "neutral"
+          scale = 1, -- nil | 1 (default) | 2  | 3 | ...
+          width = nil, -- nil | 800 | 400 | ...
+          height = nil, -- nil | 600 | 300 | ...
+          cli_args = nil, -- nil | { "--no-sandbox" } | { "-p", "/path/to/puppeteer" } | ...
+        },
+        plantuml = {
+          charset = nil,
+          cli_args = nil, -- nil | { "-Djava.awt.headless=true" } | ...
+        },
+        d2 = {
+          theme_id = nil,
+          dark_theme_id = nil,
+          scale = nil,
+          layout = nil,
+          sketch = nil,
+          cli_args = nil, -- nil | { "--pad", "0" } | ...
+        },
+        gnuplot = {
+          size = nil, -- nil | "800,600" | ...
+          font = nil, -- nil | "Arial,12" | ...
+          theme = nil, -- nil | "light" | "dark" | custom theme string
+          cli_args = nil, -- nil | { "-p" } | { "-c", "config.plt" } | ...
+        },
+      },
+    },
+  },
+  {
+    {
+      "rachartier/tiny-inline-diagnostic.nvim",
+      event = "VeryLazy",
+      priority = 1000,
+      opts = {},
+    },
+    {
+      "neovim/nvim-lspconfig",
+      opts = { diagnostics = { virtual_text = false } },
+    },
+  },
 }
