@@ -144,4 +144,13 @@ return {
       opts = { diagnostics = { virtual_text = false } },
     },
   },
+  {
+    "lewis6991/gitsigns.nvim",
+    event = "BufReadPre",
+    config = function()
+      require("gitsigns").setup({
+        word_diff = true, -- inline word diff
+      })
+    end,
+  },
 }
